@@ -1,0 +1,82 @@
+<h4 class="text-center">Nice selections! Scheduling time...</h4>
+
+<div class="col-md-8 col-md-offset-2 col=xs">
+  <!--TODO: update to something other than legend-->
+  <legend class="no-margin-bottom margin-top-5-percent">These days in {{ currentMonth }} might work for me...</legend>
+  <form class="well">
+
+    <fieldset>
+      <div class="row">
+        <div class="col-lg-5 col-md-12">
+          <div class="col-xs-12" >
+            <datepicker ng-model="dt" min-date="minDate" show-weeks="false" class="" multi-select='selectedDates'
+                        custom-class="getDayClass(date, mode)" select-range='false'>
+
+            </datepicker>
+          </div>
+        </div>
+        <div class="col-md-7 col-xs-10 col-xs-offset-1 col-md-offset-0">
+          <div class="row">
+            <div class="col-xs-5 col-sm-4">
+              <p class="text-center"><b>Date</b></p>
+            </div>
+            <div class="col-xs-5 col-sm-4">
+              <p class="text-center"><b>Time</b></p>
+            </div>
+            <!--<div class="col-xs-4">-->
+              <!--yooo!-->
+              <!--&lt;!&ndash;<p class="text-center"><b>Time</b></p>&ndash;&gt;-->
+            <!--</div>-->
+          </div>
+
+          <div class="row" ng-repeat="selectedDate in selectedDates">
+            <div class="col-sm-4 col-xs-5">
+              <p class="font-size-15px text-center">{{selectedDate | amDateFormat:'ddd., MM/DD' }}</p>
+            </div>
+            <div class="col-sm-4 col-xs-5">
+              <p class="font-size-15px text-center">{{startTime | displayVolunteerSelectedTime: endTime}}</p>
+            </div>
+            <div class="col-sm-3 col-xs-2  margin-top-negative-2-5-px">
+              <label class="label label-default cursor-pointer"
+                     ng-click="open(this)"><i class="fui-time hidden-xs"> Set Time</i><i class="fui-time hidden-sm hidden-md hidden-lg"> Set</i></label>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+          <h5 class="modal-title">Select time for range for {{ selectedDate | amDateFormat:'ddd., MM/DD' }}</h5>
+        </div>
+        <div class="modal-body">
+          <div class="form-group col-md-6 col-sm-12" ng-class="{'has-error': timepickerForm.time.$invalid}">
+            <label class="control-label"><i class="fa fa-clock-o"></i> Start Time</label>
+            <input type="text" class="form-control" size="8" ng-model="startTime" name="startTime" bs-timepicker>
+          </div>
+
+          <div class="form-group col-md-6 col-sm-12" ng-class="{'has-error': timepickerForm.time.$invalid}">
+            <label class="control-label"><i class="fa fa-clock-o"></i> End Time</label>
+            <input type="text" class="form-control" size="8" ng-model="endTime" name="time" bs-timepicker>
+          </div>
+        </div>
+        <div class="modal-footer no-border-top">
+          <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+          <button class="btn btn-primary" ng-click="ok()">OK</button>
+        </div>
+      </script>
+    </fieldset>
+
+  </form>
+
+
+  <div class="row text-center">
+    <button class="btn btn-lg btn-primary width-25-percent volunteer-sign-up margin-top-2-5-percent"
+            ui-sref="volunteerSignUp.volunteerSignUpStep3" ng-click="setVolunteerUserSelectedDates()"
+            ng-disabled="selectedDates.length < 1">
+      Next
+    </button>
+  </div>
+
+</div>

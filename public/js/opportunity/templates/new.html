@@ -1,0 +1,72 @@
+<fieldset>
+  <div class="row">
+    <legend class="text-center">New Opportunity</legend>
+
+    <div class="col-xs-8 col-xs-offset-2 text-left">
+      <div class="input-container">
+        <label for="first-name">Opportunity Name</label>
+        <input type="text" class="form-control" id="first-name" placeholder="Dolores Park Clean-up"
+               name="firstName" ng-model="newOpportunity.name"
+               required
+               ng-required="true"
+               ng-minlength="2">
+        <!--<i class="fui-check validation-check" ng-show="volunteerSignUpForm.firstName.$valid"></i>-->
+
+      </div>
+
+      <div class="input-container">
+        <label for="last-name">Date</label>
+        <input type="date" class="form-control" id="last-name" placeholder="12/25/2015" name="date"
+               ng-model="newOpportunity.startDate" required>
+        <!--<i class="fui-check validation-check" ng-show="volunteerSignUpForm.lastName.$valid"></i>-->
+      </div>
+
+      <div class="input-container">
+        <div class="row">
+          <div class="col-xs-4">
+            <label for="start-time">Start Time</label>
+            <input type="time" class="form-control" id="start-time" name="start-time"
+                   ng-model="newOpportunity.startTime" placeholder="9:00" required >
+            <!--<i class="fui-check validation-check" ng-show="volunteerSignUpForm.location.$valid"></i>-->
+          </div>
+          <div class="col-xs-4 col-xs-offset-2">
+            <label for="location">End Time</label>
+            <input type="time" class="form-control" id="end-time"  name="end-time"
+                   ng-model="newOpportunity.endTime"  required >
+            <i class="fui-check validation-check" ng-show="volunteerSignUpForm.location.$valid"></i>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="input-container">
+        <label for="description">Description</label>
+        <textarea type="email" class="form-control" id="description" name="description"
+                  placeholder="I'm organizing a group of people to clean Dolores Park (it's been very dirty recently). RSVP and help keep S.F. clean!"
+               ng-model="newOpportunity.description"
+               required></textarea>
+        <!--<i class="fui-check validation-check" ng-show="volunteerSignUpForm.email.$valid"></i>-->
+      </div>
+
+      <div class="input-container">
+        <label for="location">Location</label>
+        <input type="text" class="form-control" id="location" g-places-autocomplete name="location"
+               placeholder="1 Market St., San Francisco"
+               ng-model="newOpportunity.location"
+               required
+               ng-minlength="6">
+        <i class="fui-check validation-check" ng-show="volunteerSignUpForm.password.$valid"></i>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary margin-top-2-5-percent"
+            ng-click="volunteerSignUp()"
+            ng-disabled="volunteerSignUpForm.$invalid">
+      Submit for community approval
+    </button>
+  </div>
+
+</fieldset>

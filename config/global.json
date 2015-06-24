@@ -1,0 +1,14 @@
+{
+  "applications": {
+    "simpleteer": {
+      "applicationId": "s2qlmkJYOVuylIsY30apIwxg9dRCAsDWazQ2fUij",
+      "masterKey": "pgOQZrj0DJNj6VfPGdo2soF2OQZOuDXNtixuBTY9"
+    },
+    "_default": {
+      "link": "simpleteer"
+    }
+  },
+  "global": {
+    "parseVersion": "1.3.5"
+  }
+}

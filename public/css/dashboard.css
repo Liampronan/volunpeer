@@ -1,0 +1,200 @@
+.organizer-image{
+    max-height: 125px;
+    max-width: 125px;
+}
+
+.label.tag{
+    /*vertical-align: -webkit-baseline-middle;*/
+    font-weight: 100;
+}
+
+.organizer-card.well{
+    min-height: 20px;
+    /*padding: 19px;*/
+    margin-bottom: 20px;
+    background-color: RGBA(254, 254, 254, 1);
+    /*border: 1px solid rgba(25, 181, 254, 0.05);*/
+    border: none;
+    border-radius: 4px;
+    -webkit-box-shadow: 6px 5px 2px 0 rgba(25, 181, 254, 0.075);
+    /*box-shadow: 6px 5px 2px 0 rgba(25, 181, 254, 0.075); blue box shadow*/
+    box-shadow: 6px 5px 2px 0 rgba(203, 203, 203, 0.89);
+    padding: 0;
+    transition: all .1s linear;
+    position: absolute;
+}
+
+.organizer-card.well .community-reputation{
+    display: block;
+}
+.organizer-card.well .panel-footer{
+    background-color: rgba(128, 128, 128, 0.08);
+}
+.organizer-card.well .panel-footer button{
+    background-color: transparent;
+}
+.organizer-card.well .panel-footer button.approve{
+    color: RGBA(57, 203, 116, 1);
+}
+.organizer-card.well .panel-footer button.disapprove{
+    color: RGBA(231, 76, 60, 1);
+}
+
+.organizer-card .event-description{
+    font-size: 15px;
+    font-weight: 100;
+    margin-bottom: 0;
+    min-height: 75px;
+}
+
+.dark-gray-link{
+    color: rgba(0,0,0, 0.5);
+}
+.dark-gray-link:hover{
+    color: rgba(0,0,0, 0.8);
+    text-decoration: underline;
+}
+
+.inline-block{
+    display: inline-block;
+}
+
+.organizer-card .date-time-details span{
+    font-size: 16px;
+    color: rgb(119, 119, 119)
+}
+.organizer-card .date-time-details span:before{
+    padding: 0 3px;
+    vertical-align: middle;
+}
+.organizer-card .date-time-details .date-time{
+    font-size: 16px;
+    font-family: lato;
+}
+
+.organizer-card .location a{
+    color: gray !important;
+    font-size: 15px;
+    font-weight: 100;
+
+}
+
+.organizer-card .location a:hover{
+    color: #428bca !important;
+    text-decoration: underline;
+}
+
+.organizer-card .no-unvetted-opportunities{
+    width: 392px;
+    min-height: 175px;
+    padding-top: 5%;
+}
+.organizer-card .no-unvetted-opportunities .fui-plus:before{
+    vertical-align: inherit;
+}
+
+/* overrides for hover css animations combined with flat-ui css*/
+.organizer-card .hvr{
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0,0,0,0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    padding-right: 15px;
+    -webkit-transition-duration: .4s;
+    transition-duration: .4s;
+    width: 47px;
+    height: 41px;
+}
+
+/*.organizer-card .hvr-icon-bounce {*/
+
+/*}*/
+
+.hvr-icon-bounce:before{
+    content: "\e60a" !important;
+    font-family: inherit !important;
+    position: absolute !important;
+    top: 10px;
+    left: 12px;
+}
+
+.hvr-icon-shrink:before{
+    content: "\e609" !important;
+    font-family: inherit !important;
+    position: absolute !important;
+    top: 10px;
+    left: 12px;
+}
+
+@keyframes yes {
+    0% {
+        transform:scale(1.05, 1.05);
+    }
+    100% {
+        /*transform: rotateZ(-250deg);*/
+        transform: translate(1000px, -25px) rotateZ(45deg) scale(1.15, 1.15);
+        /*transform-origin: 60% 100%;*/
+        /*left: 100vw;*/
+        /*top: -300vh;*/
+    }
+}
+.animateYes {
+    animation-fill-mode: both;
+    animation: yes 0.20s linear;
+}
+.animateYes:before {
+    /*transform: scale(0.5, 0.5);*/
+    background: url('http://i.imgur.com/Zkwj970.png') no-repeat center 10px;
+}
+
+@keyframes no {
+    0% {
+        right: 0;
+    }
+
+    100% {
+        /*transform: rotateZ(315deg) scale(0.15, 0.15);*/
+        transform: translate(-900px, -25px) rotateZ(-45deg) scale(1.15, 1.15);
+        /*right: 80vw;*/
+    }
+}
+.animateNo {
+    animation-fill-mode: both;
+    animation: no 0.2s linear;
+}
+.animateNo:before {
+    transform: rotateZ(35deg);
+    background: url(http://i.imgur.com/XqQZ4KR.png) no-repeat center 10px;
+}
+
+.RSVP.modal-body .location{
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.RSVP.modal-body .location a{
+    color: gray;
+}
+
+.RSVP.modal-body .location a:hover{
+    color: #428bca !important;
+    text-decoration: underline;
+}
+.RSVPed-opportunities span.fui-arrow-left, span.fui-arrow-right{
+    /*margin-top: 5vh;*/
+    cursor: pointer;
+}
+
+.RSVPed-opportunities .well{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: white;
+}
+
+
+

@@ -1,0 +1,74 @@
+<h2 class="text-center">Volunteering, simplified.</h2>
+<h6 class="text-center">Easily find tailored, community-vetted volunteer opportunities.</h6>
+
+<div class="row margin-top-5-percent get-started">
+  <div class="col-sm-4 col-sm-offset-2">
+    <div class="tile">
+      <h6><b>I'd like to volunteer</b></h6>
+      <button class="btn btn-primary" ui-sref="volunteerSignUp.step1">Find matches in 60 seconds</button>
+      <p>No commitments.</p>
+      <p>Vetted matches for your schedule and interests.</p>
+    </div>
+  </div>
+
+  <div class="col-sm-4 col-sm-offset-0">
+    <div class="tile">
+      <h6><b>I'd like volunteer assistance</b></h6>
+      <button class="btn btn-primary" ui-sref="volunteerSignUp({'isVolunteerRequestor': true})">Get Started</button>
+      <p>Individuals and groups welcome.</p>
+      <p>Subject to community approval.</p>
+    </div>
+  </div>
+</div>
+
+<div class="row margin-top-5-percent how-it-works">
+  <div class="col-sm-8 center-block float-none">
+    <div class="tile">
+      <h6 class="no-margin-top no-margin-bottom">
+        <b>How it works</b>
+      </h6>
+
+
+      <button class="btn btn-sm btn-default" ng-class="{'btn-inverse': howItWorksVolunteersSelected}"
+              ng-click="setHowItWorksVoluneersSelected(true)">
+        For volunteers
+      </button>
+      <button class="btn btn-sm btn-default" ng-class="{'btn-inverse': !howItWorksVolunteersSelected}"
+              ng-click="setHowItWorksVoluneersSelected(false)">
+        For volunteer-seekers
+      </button>
+
+
+
+      <div class="row margin-top-1-percent">
+        <div class="col-sm-4">
+          <h6 class="numberCircle margin-auto">1</h6>
+          <p ng-if="howItWorksVolunteersSelected">Tell us about yourself and your schedule.</p>
+          <p ng-if="!howItWorksVolunteersSelected">Tell us about your needs and scheduling.</p>
+        </div>
+
+        <div class="col-sm-4">
+          <h6 class="numberCircle margin-auto">2</h6>
+          <p ng-if="howItWorksVolunteersSelected">Get tailored, community-vetted opportunities.</p>
+          <p ng-if="!howItWorksVolunteersSelected">Get approved by our community of volunteers.</p>
+        </div>
+
+        <div class="col-sm-4">
+          <h6 class="numberCircle margin-auto">3</h6>
+          <p ng-if="howItWorksVolunteersSelected">RSVP for opportunities and help out!</p>
+          <p ng-if="!howItWorksVolunteersSelected">Volunteers sign up for your opportunity!</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="row ">
+      <button class="btn btn-default center-block">Why Volunteer?</button>
+    </div>
+
+  </div>
+
+
+
+
+
+</div>

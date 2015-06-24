@@ -1,0 +1,24 @@
+label.checkbox {
+    display: inline-block;
+}
+
+.fui-question-circle{
+    padding-left: 10px;
+}
+
+.fui-question-circle:before{
+    vertical-align: sub;
+}
+
+.fui-plus:before{
+    vertical-align: middle;
+}
+
+.fui-question-circle:hover{
+    cursor: pointer;
+}
+
+.volunteer-sign-up legend{
+    font-size: 18px;
+}
+

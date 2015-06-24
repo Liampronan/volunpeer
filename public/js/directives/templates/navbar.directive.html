@@ -1,0 +1,116 @@
+<nav class="navbar navbar-inverse navbar-embossed" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+      <span class="sr-only">Toggle navigation</span>
+    </button>
+    <a class="navbar-brand" ui-sref="home">Volunpeer</a>
+  </div>
+  <div class="collapse navbar-collapse" id="navbar-collapse-01">
+    <ul class="nav navbar-nav">
+      <li ng-class="{active: activeTab === 'home' || activeTab ===  'dashboard'}">
+        <a href="#" ng-if="!currentUser">Home</a>
+        <a ui-sref="user.dashboard" ng-if="currentUser">Dashboard</a>
+      </li>
+      <li ng-class="{active: activeTab === 'manage'}">
+        <a ui-sref="user.manage" ng-if="currentUser">Manage</a>
+      </li>
+      <li ng-class="{active: activeTab === 'settings'}">
+        <a ui-sref="user.settings" ng-if="currentUser">Settings</a>
+      </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+
+      <li class="" ng-if="!currentUser">
+        <a ui-sref="signIn" href="#">Sign In</a>
+      </li>
+
+      <li class="messages dropdown" ng-if="currentUser">
+        <a class="no-padding-left dropdown-toggle" data-toggle="dropdown" >
+          <i class="fui-mail" ng-click="clearNavNotifications()">
+            <span class="badge" ng-if="notificationCount > 0">{{ notificationCount }}</span>
+          </i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Welcome to Volunpeer!</a></li>
+          <!--<li><a href="#">Upcoming event tomorrow: Hack4Change</a></li>-->
+          <!--<li><a href="#">Another action</a></li>-->
+          <!--<li><a href="#">Something else here</a></li>-->
+          <!--<li class="divider"></li>-->
+          <!--<li><a href="#">Separated link</a></li>-->
+        </ul>
+      </li>
+
+      <li class="" ng-if="currentUser">
+        <a class="welcome">
+          Hi, {{ currentUser.get('firstName') }}
+        </a>
+      </li>
+
+      <li class="" ng-if="currentUser" id="nav-profile-picture-container" >
+        <a class="text-center" data-toggle="dropdown"  >
+          <img ng-src="{{ currentUser.get('fbImgUrl') }}" class="img-circle" id="nav-profile-picture" alt=""/>
+          <div id="nav-profile-picture-overlay-container" ng-mouseover="hoverIn($event)"  ng-mouseout="hoverOut($event)">
+
+            <span style="
+                color: white;
+                top: 22.5%;
+                position: absolute;
+                left: 12.5%;
+                font-size: 20px;
+                font-weight: 100;
+                text-align: center;
+                min-width: 34px;
+            ">
+              {{ currentUser.get('reputation') }}
+            </span>
+          </div>
+        </a>
+        <ul class="dropdown-menu reputation-history"  ng-mouseleave="hoverOut($event)" >
+          <li ng-repeat="repHistory in userReputationHistory | limitTo: 3">
+            <a>
+              <span ng-if="repHistory.get('amount') > 0">
+                <span class="plus-reputation reputation-increment-amount">
+                  <span class="fui-triangle-up-small"></span>{{repHistory.get('amount')}}
+                </span>
+              </span>
+              <span ng-if="repHistory.get('amount') < 0">
+                <span class="minus-reputation reputation-increment-amount">
+                  <span class="fui-triangle-down-small"></span>{{ repHistory.get('amount') | removeMinusSign }} </span>
+              </span>
+              <span class="reputation-history-description">
+                for {{ repHistory.get('event') }}
+                <span ng-click="goToOpportunityPage(repHistory.get('opportunity').id)" class="opportunity-link">
+                  {{ repHistory.get('opportunity').get('name') }}
+                </span>
+              </span>
+            </a>
+          </li>
+          <li class="divider"></li>
+          <li class="text-center"><a href="#">See Full Reputation History</a></li>
+        </ul>
+      </li>
+
+      <li class="" ng-if="currentUser">
+        <a ng-click="signOut()" href="#">Sign Out</a>
+      </li>
+        <!--<span class="welcome">Hi, {{ currentUser.get('firstName') }}</span>-->
+
+      </li>
+    </ul>
+
+
+
+    <!--<form class="navbar-form navbar-right" action="#" role="search">-->
+    <!--<div class="form-group">-->
+    <!--<div class="input-group">-->
+    <!--<input class="form-control" id="navbarInput-01" type="search" placeholder="Search">-->
+    <!--<span class="input-group-btn">-->
+    <!--<button type="submit" class="btn"><span class="fui-search"></span></button>-->
+    <!--</span>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</form>-->
+
+  </div><!-- /.navbar-collapse -->
+</nav>

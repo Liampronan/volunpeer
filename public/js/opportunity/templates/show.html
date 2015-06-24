@@ -1,0 +1,105 @@
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3" cg-busy="fetchOpportunityPromise">
+    <legend class="lead font-size-20px no-margin-bottom color-black">{{ opportunity.get('name') }}</legend>
+
+    <div class="well organizer-card" cg-busy="fetchVettedOpportunityPromise" style="min-height: 175px">
+      <div ng-if="opportunity">
+        <div class="row">
+          <div class="col-xs-4">
+            <img src="{{opportunity.get('owner').profilePictureUrl || opportunity.get('owner').fbImgUrl }}"
+                 class="img-rounded organizer-image" alt=""/>
+          </div>
+
+          <div class="col-xs-8 personal-info-container">
+            <h6 class="no-margin-top no-margin-bottom">
+              {{
+              opportunity.get('owner').firstName
+              || opportunity.get('owner').organizationName
+              }}
+            </h6>
+            <p class="font-size-15px no-margin-bottom">
+              <a href="#" class="dark-gray-link">{{ opportunity.get('owner').type }} in
+                {{ opportunity.get('owner').locationName }}</a>
+            </p>
+            <a class="font-size-15px community-reputation" href="#">{{ opportunity.get('owner').reputation }} Community Reputation</a>
+            <!--<div class="row">-->
+            <p class="text-center date-time-details">
+                  <span class="fui-calendar pull-left">
+                    <span class="date-time">{{opportunity.get('startDate') |
+                      displayOpportunityDateRange:opportunity.get('endDate')
+                    }}</span>
+                  </span>
+              <br/>
+                  <span class="fui-time pull-left" style="margin-top: -5px">
+                    <span class="date-time">{{
+                    opportunity.get('startTime')
+                      | displayOpportunityTimeRange:opportunity.get('endTime')
+                    }}</span>
+                  </span>
+            </p>
+
+          </div>
+          <div class="col-xs-12">
+            <h6 class="location no-margin-bottom no-margin-top text-center">
+              <a href="https://www.google.com/maps?q=1239+Powell+st+94133"
+                 onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=350,height=400'); return false">
+                <span class="fui-location"></span> 1239 Powell St., SF 94133
+              </a>
+            </h6>
+          </div>
+
+        </div>
+        <hr class="card-divider margin-top-1-percent"/>
+        <div class="row">
+          <div class="col-xs-10 col-xs-offset-1 text-center">
+            <p class="event-description">
+              {{opportunity.get('description')}}
+            </p>
+          </div>
+
+          <div class="col-xs-12 text-center margin-bottom-2-percent">
+                <span class="tag label label-default margin-right-1-percent"
+                      ng-repeat="tag in opportunity.get('tags')">
+                  {{tag}}
+                </span>
+          </div>
+
+        </div>
+        <div class="panel-footer no-padding" ng-if="currentUserHasNotRSVPed">
+          <div class="row">
+            <div class="col-xs-2">
+              <button class="btn no-border-radius fui-cross hvr-icon-shrink hvr disapprove"
+                      ng-click="declineRSVP($event)">
+              </button>
+            </div>
+            <div class="col-xs-8 text-center">
+              <p class="inline-block no-margin-bottom vertical-align-sub">RSVP?</p>
+            </div>
+            <div class="col-xs-2">
+              <button class="btn pull-right no-border-radius fui-check hvr-icon-bounce hvr approve"
+                      ng-click="showRSVPModal($event)"></button>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer no-padding" ng-if="currentUserAttendingOpportunity">
+          <div class="row">
+            <div class="col-xs-12 text-center">
+              <p class="inline-block no-margin-bottom vertical-align-sub">
+                You're attending this opportunity
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div ng-if="!opportunity && fetchVettedOpportunityPromise._resolved" class="no-unvetted-opportunities">
+        <h6 class="text-center font-size-17px">No more upcoming opportunities</h6>
+        <p class="text-center font-weight-300 font-size-15px">We'll notify you when we have more for you!</p>
+        <!--<p class="text-center font-weight-300 font-size-15px">Help us add more by vetting some!</p>-->
+        <div class="text-center">
+          <button class="btn btn-default">Add new opportunity <i class="fui-plus"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

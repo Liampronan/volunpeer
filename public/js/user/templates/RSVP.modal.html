@@ -1,0 +1,43 @@
+<div class="modal-header">
+  <h5 class="modal-title">RSVP for {{ opportunity.get('name') }}</h5>
+</div>
+<div class="modal-body RSVP no-padding-bottom">
+  <div class="row">
+    <div class="col-xs-4">
+      <img src="{{opportunity.get('owner').profilePictureUrl || opportunity.get('owner').fbImgUrl }}"
+           class="img-rounded organizer-image" alt=""/>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <h6 class="no-margin-top no-margin-bottom">
+        Organized by {{opportunity.get('owner').firstName || opportunity.get('owner').organizationName}}
+      </h6>
+      <h6 class="location margin-top-1-percent margin-bottom-1-percent">
+        <a href="https://www.google.com/maps?q=1239+Powell+st+94133" target="_blank">
+          <span class="fui-location"></span> 1239 Powell St., SF 94133
+        </a>
+      </h6>
+
+      <p class="text-center date-time-details">
+                  <span class="fui-calendar pull-left">
+                    <span class="date-time">{{opportunity.get('startDate') |
+                      displayOpportunityDateRange:opportunity.get('endDate')
+                    }}</span>
+                  </span>
+        <br/>
+                  <span class="fui-time pull-left" style="margin-top: -5px">
+                    <span class="date-time">{{
+                    opportunity.get('startTime')
+                      | displayOpportunityTimeRange:opportunity.get('endTime')
+                    }}</span>
+                  </span>
+      </p>
+
+    </div>
+  </div>
+
+
+</div>
+<div class="modal-footer">
+  <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+  <button class="btn btn-primary" ng-click="RSVP()">RSVP <span class="fui-check-circle"></span></button>
+</div>

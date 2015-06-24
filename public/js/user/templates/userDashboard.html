@@ -1,0 +1,240 @@
+<div class="row">
+  <h4 class="text-center">Dashboard</h4>
+
+  <div class="col-xs-10 col-xs-offset-1 margin-top-2-5-percent">
+  <p class="text-center no-margin-bottom font-weight-300 color-black font-size-20px">Your RSVPs</p>
+  <div class="row RSVPed-opportunities" ng-if="RSVPedOpportunities.length > 0">
+
+    <div class="col-xs-offset-2 col-xs-8 well">
+      <div class="row">
+        <div class="col-xs-1">
+          <span class="fui-arrow-left" ng-if="RSVPedOpportunities.length > 1"></span>
+        </div>
+
+
+        <div class="col-xs-10">
+
+          <p class="no-margin-bottom text-center dark-gray-text">
+            <a ui-sref="opportunity.show({opportunityId: '{{RSVPedOpportunities[0].id}}' })" class="dark-gray-link">
+              {{RSVPedOpportunities[0].get('name')}},
+            {{RSVPedOpportunities[0].get('startDate') |
+            displayOpportunityDateRange:RSVPedOpportunities[0].get('endDate')
+            }}  {{RSVPedOpportunities[0].get('startTime')
+            | displayOpportunityTimeRange:RSVPedOpportunities[0].get('endTime')
+            }}
+            </a>
+          <!--&lt;!&ndash;<p class="text-center no-margin-bottom">{{RSVPedOpportunities[0].get('organizationName') }}</p>&ndash;&gt;-->
+          <!--&lt;!&ndash;<p class="text-center date-time-details">&ndash;&gt;-->
+                <!--&lt;!&ndash;<span class="fui-calendar">&ndash;&gt;-->
+                  <!--<span class="date-time"></span>-->
+                <!--&lt;!&ndash;</span>&ndash;&gt;-->
+            <!--<br/>-->
+                <!--&lt;!&ndash;<span class="fui-time" style="margin-top: -5px">&ndash;&gt;-->
+                  <!--<span class="date-time">{{-->
+                 <!--</span>-->
+                <!--&lt;!&ndash;</span>&ndash;&gt;-->
+          </p>
+        </div>
+
+        <span class="fui-arrow-right col-xs-1" ng-if="RSVPedOpportunities.length > 1"></span>
+      </div>
+
+
+
+
+
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="col-xs-5">
+        <legend class="lead font-size-20px no-margin-bottom color-black">Upcoming, suggested opportunities for you</legend>
+
+        <div class="well organizer-card" cg-busy="fetchVettedOpportunityPromise" style="min-height: 175px">
+          <div ng-if="displayedVettedOpportunity">
+            <div class="row">
+              <div class="col-xs-4">
+                <img src="{{displayedVettedOpportunity.get('owner').profilePictureUrl || displayedVettedOpportunity.get('owner').fbImgUrl }}"
+                     class="img-rounded organizer-image" alt=""/>
+              </div>
+
+              <div class="col-xs-8 personal-info-container">
+                <h6 class="no-margin-top no-margin-bottom">
+                  {{
+                    displayedVettedOpportunity.get('owner').firstName
+                    || displayedVettedOpportunity.get('owner').organizationName
+                  }}
+                </h6>
+                <p class="font-size-15px no-margin-bottom">
+                  <a href="#" class="dark-gray-link">{{ displayedVettedOpportunity.get('owner').type }} in
+                    {{ displayedVettedOpportunity.get('owner').locationName }}</a>
+                </p>
+                <a class="font-size-15px community-reputation" href="#">{{ displayedVettedOpportunity.get('owner').reputation }} Community Reputation</a>
+                <!--<div class="row">-->
+                <p class="text-center date-time-details">
+                  <span class="fui-calendar pull-left">
+                    <span class="date-time">{{displayedVettedOpportunity.get('startDate') |
+                      displayOpportunityDateRange:displayedVettedOpportunity.get('endDate')
+                    }}</span>
+                  </span>
+                    <br/>
+                  <span class="fui-time pull-left" style="margin-top: -5px">
+                    <span class="date-time">{{
+                    displayedVettedOpportunity.get('startTime')
+                      | displayOpportunityTimeRange:displayedVettedOpportunity.get('endTime')
+                    }}</span>
+                  </span>
+                </p>
+
+              </div>
+              <div class="col-xs-12">
+                <h6 class="location no-margin-bottom no-margin-top text-center">
+                  <a href="https://www.google.com/maps?q=1239+Powell+st+94133"
+                     onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=350,height=400'); return false">
+                    <span class="fui-location"></span> 1239 Powell St., SF 94133
+                  </a>
+                </h6>
+              </div>
+
+            </div>
+            <hr class="card-divider margin-top-1-percent"/>
+            <div class="row">
+              <div class="col-xs-10 col-xs-offset-1 text-center">
+                <p class="event-description">
+                  {{displayedVettedOpportunity.get('description')}}
+                </p>
+              </div>
+
+              <div class="col-xs-12 text-center margin-bottom-2-percent">
+                <span class="tag label label-default margin-right-1-percent"
+                      ng-repeat="tag in displayedVettedOpportunity.get('tags')">
+                  {{tag}}
+                </span>
+              </div>
+
+            </div>
+            <div class="panel-footer no-padding">
+              <div class="row">
+                <div class="col-xs-2">
+                  <button class="btn no-border-radius fui-cross hvr-icon-shrink hvr disapprove"
+                          ng-click="declineRSVP($event)">
+                  </button>
+                </div>
+                <div class="col-xs-8 text-center">
+                  <p class="inline-block no-margin-bottom vertical-align-sub">RSVP?</p>
+                </div>
+                <div class="col-xs-2">
+                  <button class="btn pull-right no-border-radius fui-check hvr-icon-bounce hvr approve"
+                          ng-click="showRSVPModal($event)"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ng-if="!displayedVettedOpportunity && fetchVettedOpportunityPromise._resolved" class="no-unvetted-opportunities">
+            <h6 class="text-center font-size-17px">No more upcoming opportunities</h6>
+            <p class="text-center font-weight-300 font-size-15px">We'll notify you when we have more for you!</p>
+            <!--<p class="text-center font-weight-300 font-size-15px">Help us add more by vetting some!</p>-->
+            <div class="text-center">
+              <button class="btn btn-default" ui-sref="opportunity.new">Add new opportunity <i class="fui-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-5 col-sm-offset-2" >
+        <legend class="lead font-size-20px no-margin-bottom color-black">Rate these opportunities</legend>
+
+        <div class="well organizer-card" cg-busy="fetchUnvettedOpportunityPromise" style="min-height: 175px">
+          <div ng-if="displayedUnvettedOpportunity">
+            <div class="row">
+              <div class="col-xs-4">
+                <img src="{{displayedUnvettedOpportunity.get('owner').profilePictureUrl || displayedUnvettedOpportunity.get('owner').fbImgUrl }}"
+                     class="img-rounded organizer-image" alt=""/>
+              </div>
+
+              <div class="col-xs-8 personal-info-container">
+                <h6 class="no-margin-top no-margin-bottom">{{ displayedUnvettedOpportunity.get('owner').firstName }}</h6>
+                <p class="font-size-15px no-margin-bottom">
+                  <a href="#" class="dark-gray-link">{{ displayedUnvettedOpportunity.get('owner').type }} in
+                    {{ displayedUnvettedOpportunity.get('owner').locationName }}</a>
+                </p>
+                <a class="font-size-15px community-reputation" href="#">{{ displayedUnvettedOpportunity.get('owner').reputation }} Community Reputation</a>
+                <!--<div class="row">-->
+                <p class="text-center date-time-details">
+                <span class="fui-calendar pull-left">
+                  <span class="date-time">{{displayedUnvettedOpportunity.get('startDate') |
+                    displayOpportunityDateRange:displayedUnvettedOpportunity.get('endDate')
+                  }}</span>
+                </span>
+                  <br/>
+                <span class="fui-time pull-left" style="margin-top: -5px">
+                  <span class="date-time">{{
+                  displayedUnvettedOpportunity.get('startTime')
+                    | displayOpportunityTimeRange:displayedUnvettedOpportunity.get('endTime')
+                  }}</span>
+                </span>
+                </p>
+              </div>
+              <div class="col-xs-12">
+                <h6 class="location no-margin-bottom no-margin-top text-center">
+                  <a href="https://www.google.com/maps?q=550+Market+st+94133"
+                     onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=350,height=400'); return false">
+                    <span class="fui-location"></span> 550 Market St., SF 94133
+                  </a>
+                </h6>
+              </div>
+            </div>
+            <hr class="card-divider margin-top-1-percent"/>
+            <div class="row">
+
+
+              <div class="col-xs-10 col-xs-offset-1 text-center">
+                <p class="event-description">
+                  {{displayedUnvettedOpportunity.get('description')}}
+                </p>
+              </div>
+
+              <div class="col-xs-12 text-center margin-bottom-2-percent">
+                <span class="tag label label-default margin-right-1-percent"
+                      ng-repeat="tag in displayedUnvettedOpportunity.get('tags')">
+                  {{tag}}
+                </span>
+              </div>
+
+            </div>
+            <div class="panel-footer no-padding">
+              <div class="row">
+                <div class="col-xs-2">
+                  <button class="btn no-border-radius fui-cross hvr-icon-shrink hvr disapprove"
+                          ng-click="approve(false, $event)">
+
+                  </button>
+                </div>
+                <div class="col-xs-8 text-center">
+                  <p class="inline-block no-margin-bottom vertical-align-sub">Approve this opportunity?</p>
+                </div>
+                <div class="col-xs-2">
+                  <button class="btn pull-right no-border-radius fui-check hvr-icon-bounce hvr approve"
+                          ng-click="approve(true, $event)"></button>
+                </div>
+
+              </div>
+          </div>
+
+          </div>
+
+          <div ng-if="!displayedUnvettedOpportunity && fetchUnvettedOpportunityPromise._resolved" class="no-unvetted-opportunities">
+            <h6 class="text-center font-size-17px">You've rated all outstanding opportunities</h6>
+            <p class="text-center font-weight-300 font-size-15px">Thank you for helping our community!</p>
+            <div class="text-center">
+              <button class="btn btn-default" ui-sref="opportunity.new">Add new opportunity <i class="fui-plus"></i></button>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+
+</div>

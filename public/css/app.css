@@ -1,0 +1,184 @@
+/*#19B5FE blue*/
+
+footer{
+    left:0;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:40px;   /* Height of the footer */
+}
+
+footer p{
+    padding-top: 10px;
+    font-size: 12px;
+}
+html,
+body {
+    margin:0;
+    padding:0;
+    height:100%;
+    background-color: RGBA(247, 247, 247, 0.5);
+
+}
+body{
+    /*padding-bottom: 100px;*/
+}
+
+body h1,h2,h3,h4,h5,h6{
+    font-weight: 500;
+}
+
+#page-container{
+    min-height:100%;
+    position:relative;
+    padding-bottom: 60px;
+}
+nav.navbar{
+    border-radius: 0;
+    background-color: white;
+}
+
+.nav li a {
+    display: inline-block;
+}
+nav img.img-circle{
+    width: 90% ;
+    /*display: inline-block;*/
+}
+
+nav span.welcome{
+    color: white;
+}
+
+nav *{
+    font-weight: 300 !important;
+
+}
+
+nav .navbar-collapse{
+    border-radius: 0 !important;
+}
+
+li#nav-profile-picture-container{
+   width: 50px;
+}
+
+li#nav-profile-picture-container a{
+    padding-top: 5px;
+
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.nav .messages .fui-mail .badge{
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background-color: rgba(255, 44, 52, 0.80);
+}
+
+#nav-profile-picture-overlay-container{
+    position: absolute;
+    top: 5px;
+    left: 4%;
+    width: 91%;
+    height: 90%;
+    background-color: rgba(68, 62, 62, 0.67);
+    opacity: 1.0;
+    -moz-opacity: 0.80;
+    filter:alpha(opacity=80);
+    border-radius: 50%;
+    transition: all .35s ease;
+}
+#nav-profile-picture-overlay-container *, .hover-trigger *{
+    transition: all .35s ease;
+}
+
+#nav-profile-picture-overlay-container:hover, .hover-trigger{
+    background-color: rgba(255,255,255, 0.8) !important;
+    cursor: pointer;
+    /*transition: all .35s ease;*/
+}
+
+#nav-profile-picture-overlay-container:hover *, .hover-trigger *{
+
+    color: RGBA(34, 154, 213, 1) !important;
+    /*color: black !important;*/
+    font-size: 30px !important;
+    transition: all .35s ease;
+    margin-top: 1px;
+
+}
+
+.dropdown-menu{
+    /*margin-top: 0 ;*/
+    margin-top: -2px! important;
+    border: 2px solid lightgray !important;
+    background-color: white !important;
+}
+
+.nav .open a{
+    color: #19B5FE !important;
+    background-color: transparent !important;
+}
+
+
+hr.card-divider{
+    margin: 15px 0 5px 0;
+}
+
+
+.loading-overlay .cg-busy-default-sign{
+    margin-top: 10%;
+    border-radius: 7px;
+    border-width: 1px;
+    background-color: RGBA(248, 248, 248, 1);
+    /*font-weight: 100;*/
+}
+
+.loading-overlay .cg-busy-default-spinner * {
+    background: rgba(5, 108, 157, 0.82);
+}
+
+.reputation-history .plus-reputation{
+    color: RGBA(57, 203, 116, 1) !important;
+    /*border-radius: 20px;*/
+    /*padding: 4px;*/
+    /*border: 1px solid rgba(128, 128, 128, 0.38);*/
+}
+.reputation-history .minus-reputation{
+    color: RGBA(231, 76, 60, 1) !important;
+    /*border-radius: 20px;*/
+    /*padding: 4px;*/
+    /*border: 1px solid rgba(128, 128, 128, 0.38);*/
+}
+
+.reputation-history span{
+    font-size: 15px !important;
+    font-weight: bolder !important;
+}
+
+.reputation-history .reputation-history-description{
+    color: RGBA(128, 128, 151, 1) !important;
+    font-weight: 100 !important;
+}
+
+.reputation-history .opportunity-link{
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 15px !important;
+    font-weight: 100 !important;
+    transition: all .35s ease;
+
+}
+
+.reputation-history .opportunity-link:hover{
+    color: lightgray;
+    transition: all .35s ease;
+
+}
+
+.dark-gray-text{
+    color: rgba(0,0,0, 0.5);
+}

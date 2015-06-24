@@ -1,0 +1,35 @@
+@media (max-width:768px) {
+
+    button.volunteer-sign-up{
+        width: 70% !important;
+    }
+
+    .signup-methods button{
+        margin: 2.5% 0;
+    }
+}
+
+button.facebook{
+    background-color: #3B5998;
+}
+
+form#volunteerSignUpForm div.input-container{
+    position: relative;
+}
+
+    form#volunteerSignUpForm div.input-container .validation-check{
+        color: #1abc9c;
+        bottom: 5%;
+        right: 2.5%;
+        position: absolute;
+        -webkit-transition: -webkit-transform 1.3s;
+        transition: transform 0.3s;
+
+    }
+
+    .validation-check.ng-hide-add, .validation-check.ng-hide-remove {
+        /* this is required as of 1.3x to properly
+           apply all styling in a show/hide animation */
+        transition: 0s linear all;
+    }
+
